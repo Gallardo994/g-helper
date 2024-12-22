@@ -20,13 +20,6 @@ public partial class AboutProvider : ObservableObject, IAboutProvider
             },
             new AboutItem
             {
-                Title = "WinRing0",
-                Description = "WinRing0 is a hardware access library for Windows",
-                Link = "https://github.com/GermanAizek/WinRing0",
-                LicenseLink = "https://github.com/GermanAizek/WinRing0/blob/master/LICENSE",
-            },
-            new AboutItem
-            {
                 Title = "NvAPIWrapper",
                 Description = "NvAPIWrapper is a .Net wrapper for NVIDIA public API, capable of managing all aspects of a display setup using NVIDIA GPUs",
                 Link = "https://github.com/falahati/NvAPIWrapper",

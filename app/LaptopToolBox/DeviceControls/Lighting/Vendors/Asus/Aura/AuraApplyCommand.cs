@@ -33,8 +33,8 @@ public class AuraApplyCommand : IBackgroundCommand
             device.OpenDevice();
             
             device.WriteFeatureData(_message);
-            device.WriteFeatureData(_messageSet);
-            device.WriteFeatureData(_messageApply);
+            device.WriteFeatureData(new byte[]{ _usb.LightingHidId, 0xb5, 0, 0, 0 });
+            device.WriteFeatureData(new byte[]{ _usb.LightingHidId, 0xb4 });
             
             device.CloseDevice();
         });

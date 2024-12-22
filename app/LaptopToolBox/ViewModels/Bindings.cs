@@ -9,7 +9,6 @@ public class Bindings : NinjectModule
         Bind<UpdatesViewModel>().ToSelf().InSingletonScope();
         Bind<AuraViewModel>().ToSelf().InSingletonScope();
         Bind<PerformanceModeViewModel>().ToSelf().InSingletonScope();
-        Bind<UnderVoltViewModel>().ToSelf().InSingletonScope();
         Bind<TrayViewModel>().ToSelf().InSingletonScope();
         Bind<AutoStartViewModel>().ToSelf().InSingletonScope();
         Bind<BatteryLimitViewModel>().ToSelf().InSingletonScope();

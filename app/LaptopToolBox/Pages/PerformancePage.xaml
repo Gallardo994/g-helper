@@ -10,6 +10,5 @@
     
     <StackPanel>
         <views:PerformanceModeView />
-        <views:UnderVoltView Margin="0 18 0 0"></views:UnderVoltView>
     </StackPanel>
 </Page>

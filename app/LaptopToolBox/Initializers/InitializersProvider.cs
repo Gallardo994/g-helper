@@ -12,7 +12,6 @@ public class InitializersProvider : IInitializersProvider
     public InitializersProvider(
         BatteryInitializer batteryInitializer,
         VendorKeyRegisterInitializer vendorKeyRegisterInitializer,
-        CpuControlInitializer cpuControlInitializer,
         PerformanceModeInitializer performanceModeInitializer,
         KeyboardBacklightInitializer keyboardBacklightInitializer,
         AutoOverdriveInitializer autoOverdriveInitializer,
@@ -28,7 +27,6 @@ public class InitializersProvider : IInitializersProvider
     {
         _initializers.Add(batteryInitializer);
         _initializers.Add(vendorKeyRegisterInitializer);
-        _initializers.Add(cpuControlInitializer);
         _initializers.Add(performanceModeInitializer);
         _initializers.Add(keyboardBacklightInitializer);
         _initializers.Add(autoOverdriveInitializer);

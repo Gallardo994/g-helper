@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using Microsoft.UI.Xaml;
 using System.Reflection;
 using System.Security.Principal;
@@ -19,12 +20,18 @@ namespace LaptopToolBox
         public App()
         {
             var appDataLogPath = System.IO.Path.Combine(ApplicationHelper.AppDataFolder, "log.txt");
+            if (!Directory.Exists(ApplicationHelper.AppDataFolder))
+            {
+                Directory.CreateDirectory(ApplicationHelper.AppDataFolder);
+            }
             
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.File(appDataLogPath, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 10, retainedFileTimeLimit: TimeSpan.FromDays(3))
                 .WriteTo.Console()
                 .MinimumLevel.Debug()
                 .CreateLogger();
+            
+            Log.Information("Application started");
             
             UnhandledException += (sender, args) =>
             {
@@ -41,15 +48,6 @@ namespace LaptopToolBox
             
             Services.ResolutionRoot = kernel;
             
-            if (!IsAdmin())
-            {
-                Log.Information("Running as non-admin, restarting as admin");
-                ApplicationHelper.Exit();
-                return;
-            }
-
-            Log.Information("Running as admin");
-            
             if (FocusSameInstance())
             {
                 Log.Information("Another instance is running, exiting");
@@ -58,13 +56,6 @@ namespace LaptopToolBox
             }
             
             InitializeComponent();
-        }
-
-        private bool IsAdmin()
-        {
-            var identity = WindowsIdentity.GetCurrent();
-            var principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
