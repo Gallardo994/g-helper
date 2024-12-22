@@ -6,20 +6,6 @@ namespace Elevator.Commands;
 
 public class ServicesControlCommand : IElevatorCommand
 {
-    private readonly HashSet<string> _allowedServices =
-    [
-        "AsusAppService",
-        "ASUSLinkNear",
-        "ASUSLinkRemote",
-        "ASUSSoftwareManager",
-        "ASUSSwitch",
-        "ASUSSystemAnalysis",
-        "ASUSSystemDiagnosis",
-        "ArmouryCrateControlInterface",
-        "AsusCertService",
-        "ASUSOptimization"
-    ];
-    
     public int Execute(Dictionary<string, string> args)
     {
         if (!args.TryGetValue("action", out var action))
@@ -46,17 +32,6 @@ public class ServicesControlCommand : IElevatorCommand
         {
             Log.Error("Services array is empty. Use --services to specify services to disable. Example: --services=service1,service2");
             return 5;
-        }
-        
-        foreach (var service in servicesArray)
-        {
-            if (_allowedServices.Contains(service))
-            {
-                continue;
-            }
-            
-            Log.Error("Service {ServiceName} is not allowed to be controlled for security reasons", service);
-            return 6;
         }
         
         if (action == "enable")
