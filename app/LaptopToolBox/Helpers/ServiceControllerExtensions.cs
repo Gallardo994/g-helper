@@ -48,16 +48,14 @@ public static class ServiceControllerExtensions
         var scmHandle = OpenSCManager(null, null, ScmAccessRights.AllAccess);
         if (scmHandle == IntPtr.Zero)
         {
-            var error = Marshal.GetLastWin32Error();
-            Log.Error("Could not open service control manager (error {Error}).", error);
+            Log.Error("Could not open service control manager.");
             return;
         }
 
         var serviceHandle = OpenService(scmHandle, service.ServiceName, ServiceAccessRights.AllAccess);
         if (serviceHandle == IntPtr.Zero)
         {
-            var error = Marshal.GetLastWin32Error();
-            Log.Error("Could not open service (error {Error}).", error);
+            Log.Error("Could not open service.");
             return;
         }
 
@@ -67,8 +65,7 @@ public static class ServiceControllerExtensions
 
             if (!success)
             {
-                var error = Marshal.GetLastWin32Error();
-                Log.Error("Could not change service start type (error {Error}).", error);
+                Log.Error("Could not change service start type.");
             }
         }
         finally

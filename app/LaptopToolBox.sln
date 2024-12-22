@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaptopToolBox", "LaptopTool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateInstaller", "UpdateInstaller\UpdateInstaller.csproj", "{55DAB549-0439-4FD4-8E9C-B8C1DA1BD306}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elevator", "Elevator\Elevator.csproj", "{51DB58BB-007C-44E7-9B6F-72389C191004}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -25,10 +23,6 @@ Global
 		{55DAB549-0439-4FD4-8E9C-B8C1DA1BD306}.Debug|x64.Build.0 = Debug|Any CPU
 		{55DAB549-0439-4FD4-8E9C-B8C1DA1BD306}.Release|x64.ActiveCfg = Release|Any CPU
 		{55DAB549-0439-4FD4-8E9C-B8C1DA1BD306}.Release|x64.Build.0 = Release|Any CPU
-		{51DB58BB-007C-44E7-9B6F-72389C191004}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{51DB58BB-007C-44E7-9B6F-72389C191004}.Debug|x64.Build.0 = Debug|Any CPU
-		{51DB58BB-007C-44E7-9B6F-72389C191004}.Release|x64.ActiveCfg = Release|Any CPU
-		{51DB58BB-007C-44E7-9B6F-72389C191004}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

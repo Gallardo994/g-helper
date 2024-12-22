@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ServiceProcess;
-using LaptopToolBox.ElevatorProxy;
 
 namespace LaptopToolBox.VendorServices.Vendors.Asus;
 
@@ -21,12 +20,10 @@ public class AsusServicesControl : IVendorServicesControl
     };
     
     private readonly IAsusServicesControlCommandLoop _commandLoop;
-    private readonly IElevatorProxy _elevatorProxy;
 
-    public AsusServicesControl(IAsusServicesControlCommandLoop commandLoop, IElevatorProxy elevatorProxy)
+    public AsusServicesControl(IAsusServicesControlCommandLoop commandLoop)
     {
         _commandLoop = commandLoop;
-        _elevatorProxy = elevatorProxy;
     }
     
     public int CountRunningSlow()
@@ -54,11 +51,11 @@ public class AsusServicesControl : IVendorServicesControl
 
     public void Enable()
     {
-        _commandLoop.Enqueue(new AsusServicesEnableCommand(_services, _elevatorProxy));
+        _commandLoop.Enqueue(new AsusServicesEnableCommand(_services));
     }
 
     public void Disable()
     {
-        _commandLoop.Enqueue(new AsusServicesDisableCommand(_services, _elevatorProxy));
+        _commandLoop.Enqueue(new AsusServicesDisableCommand(_services));
     }
 }

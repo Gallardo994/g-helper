@@ -1,28 +1,37 @@
-﻿using System.Collections.Generic;
-using LaptopToolBox.ElevatorProxy;
-using Serilog;
+﻿using System;
+using System.ServiceProcess;
+using LaptopToolBox.Helpers;
 
 namespace LaptopToolBox.VendorServices.Vendors.Asus;
 
 public class AsusServicesDisableCommand : IAsusServiceCommand
 {
     private readonly string[] _services;
-    private readonly IElevatorProxy _elevatorProxy;
     
-    public AsusServicesDisableCommand(string[] services, IElevatorProxy elevatorProxy)
+    public AsusServicesDisableCommand(string[] services)
     {
         _services = services;
-        _elevatorProxy = elevatorProxy;
     }
     
     public void Execute()
     {
-        var result = _elevatorProxy.Execute("services_control", new Dictionary<string, string>
+        foreach (var service in _services)
         {
-            { "action", "disable" },
-            { "services", string.Join(",", _services) },
-        });
-        
-        Log.Information("Disable services result: {Result}", result);
+            try
+            {
+                using var serviceController = new ServiceController(service);
+                if (serviceController.Status != ServiceControllerStatus.Running)
+                {
+                    continue;
+                }
+            
+                serviceController.Stop();
+                serviceController.SetStartMode(ServiceStartMode.Disabled);
+            }
+            catch (InvalidOperationException)
+            {
+                // Service doesn't exist
+            }
+        }
     }
 }
