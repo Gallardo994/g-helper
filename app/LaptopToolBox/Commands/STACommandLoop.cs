@@ -27,7 +27,6 @@ public class STACommandLoop : ISTACommandLoop
             catch (Exception e)
             {
                 Log.Error(e, "Exception occurred in STACommandLoop for command {CommandType}", command.GetType());
-                throw;
             }
         }
         
