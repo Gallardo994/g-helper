@@ -64,7 +64,7 @@ public class WindowHelper
         presenter.IsMinimizable = false;
         presenter.IsAlwaysOnTop = true;
         presenter.IsResizable = false;
-        presenter.SetBorderAndTitleBar(false, false);
+        presenter.SetBorderAndTitleBar(true, false);
     }
 
     public static void SetWindowAlpha(Window window, byte alpha)
