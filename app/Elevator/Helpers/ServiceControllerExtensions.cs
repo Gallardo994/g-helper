@@ -1,7 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using Serilog;
+
+namespace Elevator.Helpers;
 
 public static class ServiceControllerExtensions
 {
